@@ -23,6 +23,10 @@ while running:
     if keys[pygame.K_LEFT]: player.x -= speed
     if keys[pygame.K_RIGHT]: player.x += speed
 
+    # --- 枠外に出ないよう制限を追加 ---
+    player.x = max(0, min(player.x, WIDTH - player.width))
+    player.y = max(0, min(player.y, HEIGHT - player.height))
+
     pygame.draw.rect(screen, (0, 120, 215), player)
     pygame.display.flip()
     clock.tick(60)
